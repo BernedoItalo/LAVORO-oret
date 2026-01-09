@@ -5,7 +5,7 @@
 using namespace std;
 
 bool usciti[91] = {false}; //  per capire che numeri ci sono ancora e quali no
-
+int x0=0,x1=1,x2=2,x3=3,x4=4,x5=5,x6=6,x7=7,x8=8,x9=9;
 
 
 
@@ -17,10 +17,13 @@ int stampaTabella()
 
     for (int i = 1; i <= 90; i++) 
 	{   // ciclo per stampare tutti i numeri
-        if (usciti[i]) 
-		{ 	//controllo per cancellare il numero se e uscito
-    		cout << "|  |";           //spazzio per  quando non ci sono i numeri
-		}	        
+       if (usciti[i]) 
+{     if (i < 10)
+        cout << "|\033[31m" << i << "\033[0m |";
+    else
+        cout << "|\033[31m" << i << "\033[0m|";
+}
+
 		else 
 		{    if(i<10)
 		    cout << "|"<< i << " |";  //spazzio per i numeri quando sono inferiori a 10 quindi occupano 1 spazio in meno
@@ -35,6 +38,23 @@ int stampaTabella()
     cout << endl;
 }
 
+int schedaTomb()
+{  int z,z-d
+    do
+    { z=rand() %90 +1
+      
+      
+    	
+	
+          
+            
+        }while(z/10== )
+		cout << "|"<< j << " |"; 
+		    
+        cout << "|"<< j << "|";   	
+       }   
+  
+        
 
 
 
