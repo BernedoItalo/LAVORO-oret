@@ -1,0 +1,100 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+bool usciti[91] = {false}; //  per capire che numeri ci sono ancora e quali no
+int x0=0,x1=1,x2=2,x3=3,x4=4,x5=5,x6=6,x7=7,x8=8,x9=9;
+
+
+
+int stampaTabella() 
+{
+    
+
+    cout << "TOMBOLA"<<endl;
+
+    for (int i = 1; i <= 90; i++) 
+	{   // ciclo per stampare tutti i numeri
+       if (usciti[i]) 
+{     if (i < 10)
+        cout << "|\033[31m" << i << "\033[0m |";
+    else
+        cout << "|\033[31m" << i << "\033[0m|";
+}
+
+		else 
+		{    if(i<10)
+		    cout << "|"<< i << " |";  //spazzio per i numeri quando sono inferiori a 10 quindi occupano 1 spazio in meno
+		    else
+            cout << "|"<< i << "|";   //spazzio per quando i numeri sono maggiori ed uguali a 10 quindi occupano 2 spazi(tuttto per mantenere la tabella allineata
+            
+        }
+
+        if (i % 10 == 0)
+            cout << endl;  //per mandare a capo dopo aver rangiunto il numero 10 ,20 e cosi via
+    }
+    cout << endl;
+}
+
+int schedaTomb()
+{   int z;
+   int numeri_cas[15]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+
+    srand(time(NULL));
+    for(int j=0;j<15;j++)
+    {
+        z=rand() %90 +1;
+      numeri_cas[j]=z;
+      
+    }	
+	
+	for(int i=0;i<15;i++)
+    {
+      
+        cout << "|"<<numeri_cas[i] << "|"; 
+      if(i==4)
+      cout<<endl<<"_________________"<<endl;
+      else if(i==9)
+      cout<<endl<<"_________________"<<endl;
+      else if(i==15)
+      cout<<endl<<"_________________"<<endl;
+   
+    } 
+  } 
+            
+
+
+
+int estraiNumero()  
+{
+    int n;
+    do 
+	{
+        n = rand() % 90 + 1; //numero casuale da estrare per la tombola
+    } while (usciti[n]);    //ciclo per far in modo che n nel controllo precedente di usciti  si capisca quale cancellare
+    usciti[n] = true;
+    return n;
+}
+
+int main() {  //codice finale
+    srand(time(0));    //rand per rendere i numeri casuali sempre diversi
+
+    char scelta;   //per controllare la scelta dell'utente
+    int numero;   
+
+    do {
+        stampaTabella();      //per  stampare al tabella(quella racchiusa in "stampaTabella")
+                                
+        numero = estraiNumero();     //  per sapere che numero e stato estraro con "estraiNumero"
+        cout << "Numero estratto: " << numero << endl;   
+
+        cout << "Continuare? s/n: ";
+        cin >> scelta;
+        
+
+    } while (scelta == 's');
+
+    return 0;
+}   
